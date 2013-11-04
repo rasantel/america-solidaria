@@ -1,7 +1,13 @@
-<% provide(:title, 'Home') %>
-<h1>America Solidaria</h1>
-<p>
+<div class="center hero-unit">
+  <h1>America Solidaria Application Portal</h1>
+
+  <h2>
   This is the home page for the
   <a href="http://www.americasolidaria.org">America Solidaria</a>
-  application.
-</p>
+  application portal.
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("as-main-logo.png", alt: "America Solidaria"), 'http://www.americasolidaria.org' %>
