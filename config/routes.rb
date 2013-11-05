@@ -4,7 +4,8 @@ AmericaSolidaria::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
 
-  get "users/new"
+  resources :users
+
   match '/signup', to: 'users#new', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
