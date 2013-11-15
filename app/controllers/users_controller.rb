@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+        @volunteer_app = @user.volunteer_app
   end
 
   def create

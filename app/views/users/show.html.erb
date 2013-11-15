@@ -5,8 +5,19 @@
       <h1>
         <%= gravatar_for @user, size: 52 %>
   	<%= link_to @user.name, @user %>
-
       </h1>
+    </section>
+  </aside>
+</div>
+
+<div class = "center">
+  <aside clss = "span4"
+    <section>
+        <% if @user.volunteer_app %>
+          <%= render @volunteer_app %>
+        <% else %>
+      	  <%= link_to "Begin Application", apply_path(@user), class: "btn btn-large btn-primary" %>
+        <% end %>
     </section>
   </aside>
 </div>
