@@ -1,10 +1,15 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
 
-<%= will_paginate %>
+<% if current_user.admin? %>
+  <h1>All users</h1>
 
-<ul class="users">
-    <%= render @users %>
-</ul>
+  <%= will_paginate %>
 
-<%= will_paginate %>
+  <ul class="users">
+      <%= render @users %>
+  </ul>
+
+  <%= will_paginate %>
+<% else %>
+  <p>You do not have permission to view this page.</p>
+<% end %>
