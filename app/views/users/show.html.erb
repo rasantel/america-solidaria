@@ -10,14 +10,23 @@
   </aside>
 </div>
 
+<% if current_user.admin? %>
+
+<% else %>
 <div class = "center">
-  <aside clss = "span4"
     <section>
         <% if @user.volunteer_app %>
           <%= render @volunteer_app %>
-        <% else %>
-      	  <%= link_to "Begin Application", apply_path(@user), class: "btn btn-large btn-primary" %>
+          <% if @user.id == current_user.id %>
+      	    <%= link_to "Edit Application", edit_app_path(@user), class: "btn btn-large btn-primary" %>
+          <% end %>  
+        <% else  %>
+          <% if @user.id == current_user.id %>
+      	    <%= link_to "Begin Application", apply_path(@user), class: "btn btn-large btn-primary" %>
+          <% else %>
+            Application Not Yet Started
+          <% end %>
         <% end %>
     </section>
-  </aside>
-</div>
+  </div>
+<% end %>
