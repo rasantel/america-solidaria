@@ -16,8 +16,28 @@
 <div class = "center">
     <section>
         <% if @user.volunteer_app %>
-          <%= render @volunteer_app %>
-          <% if @user.id == current_user.id %>
+          <h1>Status: <%= @user.volunteer_app.status %></h1>
+          <h3>Basic Application</h3>
+            <p>
+              <strong>First Name:<strong>
+              <%= @user.volunteer_app.first_name %>
+            </p>
+
+            <p>
+              <strong>Last Name:<strong>
+              <%= @user.volunteer_app.last_name %>
+            </p>
+
+            <p>
+              <strong>Phone Number:<strong>
+              <%= @user.volunteer_app.phone_number %>
+            </p>
+
+            <p>
+              <strong>Skype Name:<strong>
+              <%= @user.volunteer_app.skype_name %>
+            </p>
+          <% if @user.id == current_user.id && @user.volunteer_app.status == "Pending Review"%>
       	    <%= link_to "Edit Application", edit_app_path(@user), class: "btn btn-large btn-primary" %>
           <% end %>  
         <% else  %>

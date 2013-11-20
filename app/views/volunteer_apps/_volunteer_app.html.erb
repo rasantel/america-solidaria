@@ -1,21 +1,30 @@
-<h1>Basic Information</h1>
+<h3>Application #<%= volunteer_app.id %></h3>
 
 <p>
   <strong>First Name:<strong>
-  <%= @volunteer_app.first_name %>
+  <%= volunteer_app.first_name %>
 </p>
 
 <p>
   <strong>Last Name:<strong>
-  <%= @volunteer_app.last_name %>
+  <%= volunteer_app.last_name %>
 </p>
 
 <p>
   <strong>Phone Number:<strong>
-  <%= @volunteer_app.phone_number %>
+  <%= volunteer_app.phone_number %>
 </p>
 
 <p>
   <strong>Skype Name:<strong>
-  <%= @volunteer_app.skype_name %>
+  <%= volunteer_app.skype_name %>
 </p>
+<%= form_for [volunteer_app.user, volunteer_app] do |f| %>
+	<%= f.label :status %>
+  	<%= f.select :status, [['Pending Review','Pending Review'],['Under Review','Under Review'],['Accepted','Accepted'],['Rejected','Rejected']] %>
+	<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>  
+<% end %>
+<% if current_user.admin? %>
+  <%= link_to "delete", [volunteer_app.user, volunteer_app], method: :delete,
+                                         data: { confirm: "You sure?" } %>
+<% end %>

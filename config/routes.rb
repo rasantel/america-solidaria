@@ -18,6 +18,7 @@ AmericaSolidaria::Application.routes.draw do
   get "/users/:user_id/apply" => 'volunteer_apps#new', as: 'apply'
   post "users/:user_id/view_app" => 'volunteer_apps#show', as: 'view_app'
   get "users/:user_id/edit_app" => 'volunteer_apps#edit', as: 'edit_app'
+  get "/users/:id/volunteer_apps" => 'volunteer_apps#index', as: 'show_apps'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
