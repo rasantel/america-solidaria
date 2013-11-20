@@ -11,7 +11,7 @@
 </div>
 
 <% if current_user.admin? %>
-
+      <%= render @user.volunteer_app %>
 <% else %>
 <div class = "center">
     <section>

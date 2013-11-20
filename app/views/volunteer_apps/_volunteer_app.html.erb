@@ -25,6 +25,6 @@
 	<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>  
 <% end %>
 <% if current_user.admin? %>
-  <%= link_to "delete", [volunteer_app.user, volunteer_app], method: :delete,
+  <%= link_to "Delete Application", [volunteer_app.user, volunteer_app], method: :delete,
                                          data: { confirm: "You sure?" } %>
 <% end %>
