@@ -1,0 +1,15 @@
+<% provide(:title, 'All Applications') %>
+
+<% if current_user.admin? %>
+  <h1>All applications</h1>
+
+  <%= will_paginate %>
+
+  <ul class="applications">
+      <%= render @volunteer_apps %>
+  </ul>
+
+  <%= will_paginate %>
+<% else %>
+  <p>You do not have permission to view this page.</p>
+<% end %>
