@@ -7,9 +7,11 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
+            <li><%= link_to "Public Chat", public_chat_path %></li>
             <% if current_user.admin? %>
               <li><%= link_to "Applications", user_volunteer_apps_path(current_user.id) %></li>
               <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to "Admin Chat", admin_chat_path %></li>
             <% end %>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

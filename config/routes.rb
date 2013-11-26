@@ -10,17 +10,20 @@ AmericaSolidaria::Application.routes.draw do
   resources :sessions, only: [ :new, :create, :destroy ]
 
   match '/signup', to: 'users#new', via: 'get'
+
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'  # The priority is based upon order of creation: first created -> highest priority.
+
   get "/users/:user_id/apply" => 'volunteer_apps#new', as: 'apply'
   post "users/:user_id/view_app" => 'volunteer_apps#show', as: 'view_app'
   get "users/:user_id/edit_app" => 'volunteer_apps#edit', as: 'edit_app'
 
-  get "public_chat_room/index"
-  # root to: "public_chat_room#index"
+  get "public_chat_room/index" => 'public_chat_room#index', as: 'public_chat'
+  get "admin_chat_room/index" => 'admin_chat_room#index', as: 'admin_chat'
 
 
   # Example of regular route:
