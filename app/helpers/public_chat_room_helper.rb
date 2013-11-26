@@ -1,0 +1,2 @@
+module PublicChatRoomHelper
+end

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
+
 gem 'rails', '4.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
@@ -36,3 +38,21 @@ group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+
+group :assets do
+  gem "therubyracer"
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', platforms: :ruby
+
+end
+
+group :development do
+  gem 'tilt'
+  gem 'coffee-rails-source-maps'
+end
+
+gem 'thin'
+
+gem "less-rails"
+gem 'twitter-bootstrap-rails'

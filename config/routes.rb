@@ -19,6 +19,10 @@ AmericaSolidaria::Application.routes.draw do
   post "users/:user_id/view_app" => 'volunteer_apps#show', as: 'view_app'
   get "users/:user_id/edit_app" => 'volunteer_apps#edit', as: 'edit_app'
 
+  get "public_chat_room/index"
+  # root to: "public_chat_room#index"
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
