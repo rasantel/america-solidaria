@@ -1,3 +1,5 @@
+include UsersHelper
+
 class UserChatController < WebsocketRails::BaseController
   include ActionView::Helpers::SanitizeHelper
 
@@ -22,7 +24,7 @@ class UserChatController < WebsocketRails::BaseController
   end
   
   def client_connected
-    system_msg :new_message, "client #{client_id} connected"
+    system_msg :new_message, "#{current_user.name} connected" 
   end
   
   def new_message
@@ -41,7 +43,7 @@ class UserChatController < WebsocketRails::BaseController
   
   def delete_user
     connection_store[:user] = nil
-    system_msg "client #{client_id} disconnected"
+    system_msg "#{current_user.name} disconnected"
     broadcast_user_list
   end
   

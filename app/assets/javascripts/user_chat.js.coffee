@@ -46,7 +46,7 @@ class Chat.Controller
   newMessage: (message) =>
     @messageQueue.push message
     @shiftMessageQueue() if @messageQueue.length > 15
-    @appendMessage message
+    @prependMessage message
 
   sendMessage: (event) =>
     event.preventDefault()
@@ -62,9 +62,9 @@ class Chat.Controller
     $('#username').html @user.user_name
     @dispatcher.trigger 'change_username', @user.serialize()
 
-  appendMessage: (message) ->
+  prependMessage: (message) ->
     messageTemplate = @template(message)
-    $('#chat').append messageTemplate
+    $('#chat').prepend messageTemplate
     messageTemplate.slideDown 140
 
   shiftMessageQueue: =>
@@ -74,7 +74,7 @@ class Chat.Controller
 
   createGuestUser: =>
     rand_num = Math.floor(Math.random()*1000)
-    @user = new Chat.User("Guest_" + rand_num)
+    @user = new Chat.User($('#USERNAME a').html())#"Guest_" + rand_num)
     $('#username').html @user.user_name
     $('input#user_name').val @user.user_name
     @dispatcher.trigger 'new_user', @user.serialize()

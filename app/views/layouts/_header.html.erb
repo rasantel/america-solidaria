@@ -4,14 +4,13 @@
       <%= link_to "America Solidaria", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
-            <li><%= link_to "Public Chat", public_chat_path %></li>
+            <li id = "USERNAME"><%= link_to current_user.name, user_path(current_user.id)%></li>
+            <li><%= link_to "Public Chat", public_chat_path(current_user.id) %></li>
             <% if current_user.admin? %>
+              <li><%= link_to "Admin Chat", admin_chat_path(current_user.id) %></li>
               <li><%= link_to "Applications", user_volunteer_apps_path(current_user.id) %></li>
               <li><%= link_to "Users", users_path %></li>
-              <li><%= link_to "Admin Chat", admin_chat_path %></li>
             <% end %>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -27,6 +26,7 @@
               </ul>
             </li>
           <% else %>
+            <li><%= link_to "Help", help_path %></li>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </ul>
