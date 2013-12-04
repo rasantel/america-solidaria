@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 	has_secure_password
 
         has_one :volunteer_app, dependent: :destroy
+        has_many :memberships, :dependent => :destroy
+        has_many :projects, :through => :memberships
+        has_many :posts, dependent: :destroy
+
 	accepts_nested_attributes_for :volunteer_app
 
 	def User.new_remember_token

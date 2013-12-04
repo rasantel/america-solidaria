@@ -1,0 +1,49 @@
+<% provide(:title, @project.name) %>
+
+<h1><%= @project.name %></h1>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        Project Description:
+      </h1>
+      <%= @project.description %>  
+      <h1><br><br>
+        Project Administrator:
+      </h1>  
+      <%= link_to @admin.name, @admin %>
+    </section>
+
+    <section>
+    <% unless member_of? %>
+      <%= link_to "Become a part of this project", project_join_path(@project) %>
+    <% else %>
+      You are currently a member of this project. 
+      <%= link_to "Leave project", project_unjoin_path(@project) %>
+
+    </section>
+
+    <section>
+      <%= render 'shared/post_form' %>
+    </section>
+    <% end %>
+  </aside>
+
+  <div class="span8">
+    <% if member_of? %>
+    <% if @project.posts.any? %>
+      <h3>News and Updates (<%= @project.posts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% else %>
+      <h3>No News or Updates</h3>
+    <% end %>
+    <% else %>
+      <p>You must be a member of this group to see news and updates</p>
+    <% end %>
+  </div>
+</div>
+

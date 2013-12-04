@@ -1,0 +1,16 @@
+<li>
+  <span class="content"><%= post.content %>
+  <% if current_user.admin? && !current_user?(User.find_by_id(post.user_id)) && !(User.find_by_id(post.user_id)).admin? %>
+    | <%= link_to "delete", post, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+
+  </span>
+  <span class="timestamp">
+    Posted by <%= User.find_by_id(post.user_id).name %> 
+    <% if post.user_id == @project.admin_id %>
+      <strong>(Administrator)</strong>
+    <% end %>
+    <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+</li>

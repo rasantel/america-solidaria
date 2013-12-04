@@ -1,0 +1,15 @@
+<% provide(:title, 'All projects') %>
+
+  <h1>All Projects</h1>
+
+  <% if current_user.admin? %>
+    <h3><%= link_to "Create New Project", new_project_path, class: "btn btn-large btn-primary" %></h3>
+  <% end %>
+
+  <%= will_paginate %>
+
+  <ul class="users">
+    <%= render @projects %>
+  </ul>
+
+  <%= will_paginate %>

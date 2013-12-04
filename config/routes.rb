@@ -8,7 +8,13 @@ AmericaSolidaria::Application.routes.draw do
     resources :volunteer_apps
   end
   resources :sessions, only: [ :new, :create, :destroy ]
-
+  resources :projects do
+    get 'join'
+    get 'unjoin'
+    post 'create_post'
+  end 
+  resources :posts
+  
   match '/signup', to: 'users#new', via: 'get'
 
   match '/signin', to: 'sessions#new', via: 'get'

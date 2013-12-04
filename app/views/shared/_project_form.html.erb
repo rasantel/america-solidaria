@@ -1,0 +1,10 @@
+<%= form_for(@project) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    Project Name:
+    <%= f.text_field :name %>
+    Project Description:
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit "Create New Project", class: "btn btn-large btn-primary" %>
+<% end %>
