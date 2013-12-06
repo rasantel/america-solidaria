@@ -1,0 +1,18 @@
+<% provide(:title, 'Join Requests') %>
+
+<% if current_user.id == @project.admin_id %>
+
+  <h1>Requests to Join this Project</h1>
+
+  <% if @requests.any? %>
+    <ul class="users">
+      <%= render @requests %>
+    </ul>
+  <% else %>
+    <p>There are no pending join requests at this time.</p>
+  <% end %>
+
+<% else %>
+  <p>You do not have permission to view this page</p>
+<% end %>
+

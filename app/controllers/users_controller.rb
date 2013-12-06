@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :show]
+  before_action :signed_in_user, only: [:index, :edit, :update, :show, :my_projects]
   before_action :correct_user,   only: [:edit, :update]
   before_action :correct_user_or_admin, only: :show
   before_action :admin_user,     only: :destroy
+
+  def my_projects
+    @projects = current_user.projects
+  end
 
   def index
     @users = User.paginate(page: params[:page])
@@ -10,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @projects = @user.projects.paginate(page: params[:page])
   end
 
   def new

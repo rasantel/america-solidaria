@@ -1,0 +1,8 @@
+<li>
+  <p><%= link_to User.find_by_id(request.user_id).name, User.find_by_id(request.user_id) %><br>
+  <%= link_to "Accept Request", {:action=>"accept_request", :controller=>"projects", :project_id=>@project.id, :request_id=>request.id } %>
+  | <%= link_to "Deny Request", {:action=>"deny_request", :controller=>"projects", :project_id=>@project.id, :request_id=>request.id } %>
+  </p>
+
+</li>
+

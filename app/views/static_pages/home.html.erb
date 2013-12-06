@@ -6,6 +6,18 @@
         <%= render 'shared/user_info' %>
       </section>
     </aside>
+    <div class="span8">
+    <% if @user.projects.any? %>
+      <h3>My Projects (<%= @user.projects.count %>)</h3>
+      <ol class="microposts">
+        <%= render @projects %>
+      </ol>
+      <%= will_paginate @projects %>
+    
+    <% else %>
+      <h3>You are not currently a part of any projects</h3>
+    <% end %>
+    </div>
   </div>
 <% else %>
 <div class="center hero-unit">

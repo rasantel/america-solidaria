@@ -5,6 +5,7 @@ AmericaSolidaria::Application.routes.draw do
   root 'static_pages#home'
 
   resources :users do
+    get 'my_projects'
     resources :volunteer_apps
   end
   resources :sessions, only: [ :new, :create, :destroy ]
@@ -12,6 +13,9 @@ AmericaSolidaria::Application.routes.draw do
     get 'join'
     get 'unjoin'
     post 'create_post'
+    get 'view_requests'
+    get "/projects/:project_id/accept_request/:request_id" => 'projects#accept_request', as: 'accept_request'
+    get "/projects/:project_id/deny_request/:request_id" => 'projects#deny_request', as: 'deny_request'
   end 
   resources :posts
   

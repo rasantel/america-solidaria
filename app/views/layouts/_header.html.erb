@@ -7,7 +7,8 @@
           <% if signed_in? %>
             <li id = "USERNAME"><%= link_to current_user.name, user_path(current_user.id)%></li>
             <li><%= link_to "Public Chat", public_chat_path(current_user.id) %></li>
-            <li><%= link_to "Projects", projects_path %></li>
+            <li><%= link_to "My Projects", user_my_projects_path(current_user.id) %> 
+            <li><%= link_to "Projects List", projects_path %></li>
             <% if current_user.admin? %>
               <li><%= link_to "Admin Chat", admin_chat_path(current_user.id) %></li>
               <li><%= link_to "Applications", user_volunteer_apps_path(current_user.id) %></li>

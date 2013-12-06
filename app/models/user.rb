@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
         has_one :volunteer_app, dependent: :destroy
         has_many :memberships, :dependent => :destroy
+        has_many :requests, :dependent => :destroy
         has_many :projects, :through => :memberships
         has_many :posts, dependent: :destroy
 

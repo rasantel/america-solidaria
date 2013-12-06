@@ -1,0 +1,12 @@
+<% provide(:title, 'My projects') %>
+
+  <% if current_user.projects.any? %>
+    <h1>My Projects</h1>
+
+    <ul class="users">
+      <%= render @projects %>
+    </ul>
+  <% else %>
+    <p>You are not currently a part of any projects.</p>
+  <% end %>
+

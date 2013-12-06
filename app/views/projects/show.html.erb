@@ -16,17 +16,28 @@
     </section>
 
     <section>
-    <% unless member_of? %>
-      <%= link_to "Become a part of this project", project_join_path(@project) %>
-    <% else %>
+    <% if !member_of? && !requested? %>
+      <%= link_to "Request to join this project", project_join_path(@project) %>
+    <% end %>   
+    <% if requested? %>
+      You have requested to join this project. Please wait for the project administrator to process your request.
+    <% end %>
+    <% if member_of? %>
       You are currently a member of this project. 
       <%= link_to "Leave project", project_unjoin_path(@project) %>
 
     </section>
+    
+    <% if current_user.id == @project.admin_id %>
+    <section>
+      <%= link_to "View join requests", project_view_requests_path(@project) %>
+    </section>
+    <% end %>
 
     <section>
       <%= render 'shared/post_form' %>
     </section>
+   
     <% end %>
   </aside>
 
