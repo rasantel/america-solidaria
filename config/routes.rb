@@ -7,9 +7,11 @@ AmericaSolidaria::Application.routes.draw do
   resources :users do
     get 'my_projects'
     resources :volunteer_apps
+    resources :skills
   end
 
   resources :volunteer_apps
+  resources :skills
 
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :projects do

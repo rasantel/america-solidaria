@@ -1,3 +1,50 @@
 <% provide(:title, 'Application') %>
-<h1><%= @user.name %>'s Application</h1>
+<h1><%= @volunteer_app.user.name %>'s Application</h1>
 
+<div class="span8">
+<p><strong>Name: </strong><%= @volunteer_app.first_name %> <%= @volunteer_app.last_name %></p>
+<p><strong>Date of Birth: </strong><%= @volunteer_app.birth_date %></p>
+<p><strong>Gender: </strong><%= @volunteer_app.gender %></p>
+<p><strong>Phone Number: </strong><%= @volunteer_app.phone_number %></p>
+<p><strong>Skype Name: </strong><%= @volunteer_app.skype_name %></p>
+
+<% if @volunteer_app.linked_in != "" %>
+  <p><strong>LinkedIn Account: </strong><%= @volunteer_app.linked_in %></p>
+<% end %>
+
+<p><strong>Mailing Address: </strong><br />
+  <%= @volunteer_app.street_address %><br />
+  <%= @volunteer_app.city %>, <%= @volunteer_app.state %>, <%= @volunteer_app.country %> <%= @volunteer_app.zip %>
+</p>
+
+<% if @volunteer_app.street_address_home != ""%>
+<p><strong>Home Address: </strong><br />
+  <%= @volunteer_app.street_address_home %><br />
+  <%= @volunteer_app.city_home %>, <%= @volunteer_app.state_home %>, <%= @volunteer_app.country_home %> <%= @volunteer_app.zip_home %>
+</p>
+<% else %>
+<p>Home Address is same as Mailing Address</p>
+<% end %>
+    
+<p><strong>Country(s) of Citizenship: </strong><%= @volunteer_app.citizenship_country %></p>
+
+<p><strong>Do you have any criminal convictions that have not been pardoned? </strong><br />
+<%= @volunteer_app.convicted %></p>
+
+<p><strong>How did you learn Spanish?</strong><br />
+<%= @volunteer_app.spanish_learned %></p>
+
+<p><strong>What other languages do you know? </strong><br />
+<%= @volunteer_app.other_languages %></p>
+
+<p><strong>Have you ever been denied a visa application? </strong><br />
+<%= @volunteer_app.visa_denied %></p>
+
+<% if @volunteer_app.visa_denied == "Yes" %>
+<p><strong>What country and what were the circumstances? </strong><br />
+<%= @volunteer_app.visa_explain %></p>
+<% end %>  
+ 
+<%= link_to_function "Back", "history.back()" %>
+
+</div>

@@ -6,12 +6,92 @@
 <%= f.label :last_name %>
 <%= f.text_field :last_name %>
 
+<%= f.label :birth_date, "Date of Birth" %>
+<%= f.text_field :birth_date %>
+
+Gender<br />
+<%= f.radio_button :gender, "Male" %>
+<%= f.label :gender_male, "Male", value: "Male" %>
+<%= f.radio_button :gender, "Female" %> 
+<%= f.label :gender_female, "Female", value: "Female" %>
+<br/><br/>
+
 
 <%= f.label :phone_number %>
 <%= f.text_field :phone_number %>
 
 <%= f.label :skype_name %>
-(If you do not have a Skype account, you will need to create one, as this is
-how we conduct interview.)
+<strong>(If you do not have a Skype account, you will need to create one, as this is
+how we conduct interview.)</strong>
 <%= f.text_field :skype_name %>
 
+<%= f.label :linked_in, "LinkedIn Profile URL (if applicable)" %>
+<%= f.text_field :linked_in %>
+
+<br /><br />
+
+<strong>Mailing Address</strong><br />
+<%= f.label :street_address %>
+<%= f.text_field :street_address %>
+
+<%= f.label :city %>
+<%= f.text_field :city %>
+
+<%= f.label :state %>
+<%= f.text_field :state %>
+
+<%= f.label :zip, "Zip Code" %>
+<%= f.text_field :zip %>
+
+<%= f.label :country %>
+<%= f.text_field :country %>
+
+<br /><br />
+
+<strong>Home Address</strong>(if different from Mailing Address)<br />
+<%= f.label :street_address_home, "Street Address" %>
+<%= f.text_field :street_address_home %>
+
+<%= f.label :city_home, "City" %>
+<%= f.text_field :city_home %>
+
+<%= f.label :state_home, "State" %>
+<%= f.text_field :state_home %>
+
+<%= f.label :zip_home, "Zip Code" %>
+<%= f.text_field :zip_home %>
+
+<%= f.label :country_home, "Country" %>
+<%= f.text_field :country_home %>
+
+<br /><br /><br /><br />
+
+<%= f.label :citizenship_country, "Country of Citizenship (List all)" %>
+<%= f.text_field :citizenship_country %>
+
+<%= f.label :spanish_learned, "How did you learn Spanish?" %>
+<%= f.text_area :spanish_learned %>
+
+<%= f.label :other_languages, "What other languages do you know and how proficient are you in them?" %>
+<%= f.text_area :other_languages %>
+
+Do you have any criminal convictions that have not been pardoned?<br />
+<%= f.radio_button :convicted, "Yes" %>
+<%= f.label :convicted_yes, "Yes", value: "Yes" %>
+<%= f.radio_button :convicted, "No" %> 
+<%= f.label :convicted_no, "No", value: "No" %>
+<br/><br/>
+
+
+
+Have you ever been denied a visa application?<br />
+<%= f.radio_button :visa_denied, "Yes" %>
+<%= f.label :visa_denied_yes, "Yes", value: "Yes" %>
+<%= f.radio_button :visa_denied, "No" %> 
+<%= f.label :visa_denied_no, "No", value: "No" %>
+<br/><br/>
+
+
+
+<%= f.label :visa_explain, "If so, what country denied your visa and briefly describe the facts surrounding your application and refusal." %>
+<%= f.text_area :visa_explain %>

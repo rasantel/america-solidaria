@@ -10,7 +10,8 @@ class ProjectsController < ApplicationController
         @project.admin_id = current_user.id
         if @project.save        
           flash[:success] = "New Project Created"
-          redirect_to project_join_path(@project)
+          
+          redirect_to project_path(@project)
         else
                 render 'new'
         end

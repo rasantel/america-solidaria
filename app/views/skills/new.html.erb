@@ -1,10 +1,10 @@
-<% provide(:title, 'Apply') %>
-<h1>Personal Information</h1>
+<% provide(:title, 'Apply Part 2') %>
+<h1>Education, Skills, and Employment</h1>
 
 <% if @user.id == current_user.id %>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for( [@user, @user.build_volunteer_app] ) do |f| %>
+    <%= form_for( [@user, @user.build_skill] ) do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>

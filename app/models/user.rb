@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 
         has_one :volunteer_app, dependent: :destroy
+        has_one :skill, dependent: :destroy        
+
         has_many :memberships, :dependent => :destroy
         has_many :requests, :dependent => :destroy
         has_many :projects, :through => :memberships

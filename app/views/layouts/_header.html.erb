@@ -6,6 +6,9 @@
         <ul class="nav pull-right">
           <% if signed_in? %>
             <li id = "USERNAME"><%= link_to current_user.name, user_path(current_user.id)%></li>
+
+          <% if current_user.admin? || current_user.volunteer_app %>
+          <% if current_user.admin? || current_user.volunteer_app.status == "Accepted" %> 
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Projects <b class="caret"></b>
@@ -14,6 +17,8 @@
                 <li><%= link_to "My Projects", user_my_projects_path(current_user.id) %></li>
                 <li><%= link_to "Projects List", projects_path %></li>
               </ul>
+          <% end %>
+          <% end %>
 
             <% if current_user.admin? %>
               <li><%= link_to "Applications", volunteer_apps_path %></li>

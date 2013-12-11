@@ -1,19 +1,17 @@
 
   <strong>Applicant:<strong>
   <%= link_to volunteer_app.user.name, user_path(volunteer_app.user) %><br>
-  
-  <strong>Progress:<strong><br>
-
-  <%= link_to "View application", volunteer_app_path(volunteer_app.user_id) %>
+  <%= link_to "View application", volunteer_app_path(volunteer_app.id) %>
 </p>
+
+<% if current_user.admin? %>
 
 <%= form_for volunteer_app do |f| %>
 	<%= f.label :status %>
   	<%= f.select :status, [['Pending Review','Pending Review'],['Under Review','Under Review'],['Accepted','Accepted'],['Rejected','Rejected']] %>
 	<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>  
 <% end %>
-
-<% if current_user.admin? %>
+<% end %>
   <%= link_to "Delete Application", [volunteer_app], method: :delete,
                                          data: { confirm: "You sure?" } %>
-<% end %>
+<br />
