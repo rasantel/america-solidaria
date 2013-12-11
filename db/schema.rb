@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206030938) do
+ActiveRecord::Schema.define(version: 20131211021309) do
 
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
@@ -61,10 +61,29 @@ ActiveRecord::Schema.define(version: 20131206030938) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "skype_name"
+    t.date     "birth_date"
+    t.string   "gender"
+    t.string   "linked_in"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "country"
+    t.string   "citizenship_country"
+    t.string   "street_address_home"
+    t.string   "city_home"
+    t.string   "state_home"
+    t.integer  "zip_home"
+    t.string   "country_home"
+    t.string   "spanish_learned"
+    t.string   "other_languages"
+    t.string   "convicted"
+    t.string   "visa_denied"
+    t.string   "visa_explain"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",       default: "Pending Review"
+    t.string   "status",              default: "Pending Review"
   end
 
 end

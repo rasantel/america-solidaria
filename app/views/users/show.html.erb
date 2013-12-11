@@ -8,17 +8,16 @@
       </h1>
     </section>
   </aside>
-</div>
 
+<div class="span8">
 <% if current_user.admin? %>
   <% if current_user.id != @user.id  && @user.volunteer_app%>
       <%= render @user.volunteer_app %>
   <% end %>
 <% else %>
-<div class = "center">
     <section>
         <% if @user.volunteer_app %>
-          <h1>Status: <%= @user.volunteer_app.status %></h1>
+          <p>Status: <%= @user.volunteer_app.status %></p>
           <h3>Basic Application</h3>
             <p>
               <strong>First Name:<strong>
@@ -44,7 +43,10 @@
           <% end %>  
         <% else  %>
           <% if @user.id == current_user.id %>
-      	    <%= link_to "Begin Application", apply_path(@user), class: "btn btn-large btn-primary" %>
+            <div class="center">
+         
+      	      <%= link_to "Begin Application", apply_path(@user), class: "btn btn-large btn-primary" %>
+            </div>
           <% else %>
             Application Not Yet Started
           <% end %>
@@ -52,3 +54,4 @@
     </section>
   </div>
 <% end %>
+</div>

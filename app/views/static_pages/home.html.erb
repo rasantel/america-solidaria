@@ -6,18 +6,29 @@
         <%= render 'shared/user_info' %>
       </section>
     </aside>
-    <div class="span8">
-    <% if @user.projects.any? %>
-      <h3>My Projects (<%= @user.projects.count %>)</h3>
-      <ol class="microposts">
-        <%= render @projects %>
-      </ol>
-      <%= will_paginate @projects %>
+
+    <div class="span8"
+	    <p>Welcome and thank you for beginning the América Solidaria’s U.S. volunteer
+
+                application process and we look forward to reviewing your submission. </p>
+
+            <p>América Solidaria’s vision is: "With the conviction that it is possible to have a more
+
+                just and united continent, we widen our vision, erase borders, and work together to
+
+                overcome poverty and social exclusion. </p>
+
+            <p>Please watch the video below before proceeding in order to better understand our
+
+                organization.</p>
+
+            <div class="center">
+              <iframe width="490" height="275" align="center" src="http://www.youtube.com/embed/NucIPLDpoOg" frameborder="0" allowfullscreen></iframe>
     
-    <% else %>
-      <h3>You are not currently a part of any projects</h3>
-    <% end %>
-    </div>
+            </div>
+	</div>
+
+
   </div>
 <% else %>
 <div class="center hero-unit">

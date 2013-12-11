@@ -8,6 +8,9 @@ AmericaSolidaria::Application.routes.draw do
     get 'my_projects'
     resources :volunteer_apps
   end
+
+  resources :volunteer_apps
+
   resources :sessions, only: [ :new, :create, :destroy ]
   resources :projects do
     get 'join'

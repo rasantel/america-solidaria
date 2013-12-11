@@ -1,24 +1,27 @@
 class VolunteerAppsController < ApplicationController
-  before_action :set_user
+
   before_action :signed_in_user
   before_action :admin_user,     only: :index
 
   def index
-    @user = User.find(params[:user_id])
+    
     @volunteer_apps = VolunteerApp.paginate(page: params[:page])
   end
 
-  def set_user
-    @user = User.find(params[:user_id]) 
-  end
-
   def new 
+    @user = User.find(params[:user_id])
     @volunteer_app = current_user.build_volunteer_app
   end
 
   def create
+    @user = current_user
     @volunteer_app = current_user.build_volunteer_app(params[:volunteer_app].permit( :first_name,
-    :last_name, :phone_number, :skype_name) )
+    :last_name, :phone_number, :skype_name, :birth_date, :gender, :linked_in,
+    :street_address, :city, :state, :zip, :country, :citizenship_country,
+    :street_address_home, :city_home, :state_home, :zip_home, :country_home,
+    :spanish_learned, :other_languages, :convicted, :visa_denied, :visa_explain) )
+
+
     @volunteer_app.user_id = current_user.id
 
     if @volunteer_app.save
@@ -30,7 +33,7 @@ class VolunteerAppsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @volunteer_app = @user.volunteer_app
   end
 
@@ -44,7 +47,7 @@ class VolunteerAppsController < ApplicationController
       @volunteer_app = VolunteerApp.find(params[:id])
       @volunteer_app.update_attributes(params[:volunteer_app].permit( :status ))
       flash[:success] = "Applicant Notified"
-      redirect_to user_volunteer_apps_path
+      redirect_to volunteer_apps_path
     else
     if @volunteer_app.update_attributes(params[:volunteer_app].permit( :first_name,
     :last_name, :phone_number, :skype_name) )
@@ -59,7 +62,7 @@ class VolunteerAppsController < ApplicationController
 
   def destroy
     VolunteerApp.find(params[:id]).destroy!
-    redirect_to user_volunteer_apps_path
+    redirect_to volunteer_apps_path
   end
 
   private

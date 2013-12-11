@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
+	
   end
 
   def destroy
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   	if @user.save
           sign_in @user
           flash[:success] = "Welcome to the application portal!"
-          redirect_to @user
+          redirect_to root_path
   	else
   		render 'new'
   	end

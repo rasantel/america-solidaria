@@ -6,14 +6,30 @@
         <ul class="nav pull-right">
           <% if signed_in? %>
             <li id = "USERNAME"><%= link_to current_user.name, user_path(current_user.id)%></li>
-            <li><%= link_to "Public Chat", public_chat_path(current_user.id) %></li>
-            <li><%= link_to "My Projects", user_my_projects_path(current_user.id) %> 
-            <li><%= link_to "Projects List", projects_path %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Projects <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "My Projects", user_my_projects_path(current_user.id) %></li>
+                <li><%= link_to "Projects List", projects_path %></li>
+              </ul>
+
             <% if current_user.admin? %>
-              <li><%= link_to "Admin Chat", admin_chat_path(current_user.id) %></li>
-              <li><%= link_to "Applications", user_volunteer_apps_path(current_user.id) %></li>
+              <li><%= link_to "Applications", volunteer_apps_path %></li>
               <li><%= link_to "Users", users_path %></li>
-            <% end %>
+
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Chatrooms <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Admin Chat", admin_chat_path(current_user.id) %></li>
+                  <li><%= link_to "Public Chat", public_chat_path(current_user.id) %></li>
+	        </ul>
+            <% else %>
+                  <li><%= link_to "Public Chat", public_chat_path(current_user.id) %></li>
+	    <% end %>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>
